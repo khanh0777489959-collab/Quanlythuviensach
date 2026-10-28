@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 class Sach {
-    // Khai báo thuộc tính
     private String maSach;
     private String tenSach;
     private String tacGia;
@@ -9,11 +8,9 @@ class Sach {
     private double donGia;
     private int soLuong;
 
-    // Constructor mặc định
     public Sach() {
     }
 
-    // Constructor đầy đủ tham số
     public Sach(String maSach, String tenSach, String tacGia, int namXuatBan, double donGia, int soLuong) {
         this.maSach = maSach;
         this.tenSach = tenSach;
@@ -23,56 +20,7 @@ class Sach {
         this.soLuong = soLuong;
     }
 
-    // Getter và Setter
-    public String getMaSach() {
-        return maSach;
-    }
-
-    public void setMaSach(String maSach) {
-        this.maSach = maSach;
-    }
-
-    public String getTenSach() {
-        return tenSach;
-    }
-
-    public void setTenSach(String tenSach) {
-        this.tenSach = tenSach;
-    }
-
-    public String getTacGia() {
-        return tacGia;
-    }
-
-    public void setTacGia(String tacGia) {
-        this.tacGia = tacGia;
-    }
-
-    public int getNamXuatBan() {
-        return namXuatBan;
-    }
-
-    public void setNamXuatBan(int namXuatBan) {
-        this.namXuatBan = namXuatBan;
-    }
-
-    public double getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(double donGia) {
-        this.donGia = donGia;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    // Bài 1: Hàm Nhập
+    // Bai 1
     public void Nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mã sách: ");
@@ -87,6 +35,7 @@ class Sach {
         this.donGia = sc.nextDouble();
         System.out.print("Nhập số lượng: ");
         this.soLuong = sc.nextInt();
+        sc.close();
     }
 
     // Bài 2: Hàm tính thành tiền
@@ -94,7 +43,6 @@ class Sach {
         return donGia * soLuong;
     }
 
-    // Bài 3: Hàm tính phí vận chuyển (5%)
     public double tinhPhiVanChuyen() {
         return tinhThanhTien() * 0.05;
     }
@@ -104,7 +52,6 @@ class Sach {
         return tinhThanhTien() + tinhPhiVanChuyen();
     }
 
-    // Hàm Xuất
     public void Xuat() {
         System.out.println("Mã sách: " + maSach);
         System.out.println("Tên sách: " + tenSach);
@@ -118,7 +65,7 @@ class Sach {
     }
 }
 
-public class quanlisach {
+public class QuanLySach {
     public static void main(String[] args) {
         Sach s = new Sach();
         s.Nhap();
