@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 class Sach {
-    // Thuộc tính
+    // Khai báo thuộc tính
     private String maSach;
     private String tenSach;
     private String tacGia;
@@ -23,7 +23,7 @@ class Sach {
         this.soLuong = soLuong;
     }
 
-    // Các hàm Getter và Setter
+    // Getter và Setter
     public String getMaSach() {
         return maSach;
     }
@@ -72,7 +72,7 @@ class Sach {
         this.soLuong = soLuong;
     }
 
-    // Hàm nhập theo mẫu
+    // Bài 1: Hàm Nhập
     public void Nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mã sách: ");
@@ -104,7 +104,7 @@ class Sach {
         return tinhThanhTien() + tinhPhiVanChuyen();
     }
 
-    // Hàm xuất theo mẫu
+    // Hàm Xuất
     public void Xuat() {
         System.out.println("Mã sách: " + maSach);
         System.out.println("Tên sách: " + tenSach);
@@ -118,7 +118,7 @@ class Sach {
     }
 }
 
-public class QuanLySach {
+public class quanlisach {
     public static void main(String[] args) {
         Sach s = new Sach();
         s.Nhap();
