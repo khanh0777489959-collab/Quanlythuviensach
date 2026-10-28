@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-// Lớp Sách chứa các thuộc tính, getter/setter, hàm nhập và xuất
+// Lớp Sách chứa các thuộc tính, getter, setter, hàm nhập và hàm xuất
 class Sach {
-    // 1. Thuộc tính (dùng private, KHÔNG dùng static)
+    // 1. Khai báo thuộc tính (private, không dùng static)
     private String maSach;
     private String tenSach;
     private String tacGia;
@@ -10,11 +10,11 @@ class Sach {
     private double donGia;
     private int soLuong;
 
-    // Constructor mặc định (hàm khởi tạo không tham số)
+    // Constructor mặc định (hàm khởi tạo)
     public Sach() {
     }
 
-    // Constructor có tham số
+    // Constructor đầy đủ tham số
     public Sach(String maSach, String tenSach, String tacGia, int namXuatBan, double donGia, int soLuong) {
         this.maSach = maSach;
         this.tenSach = tenSach;
@@ -24,7 +24,7 @@ class Sach {
         this.soLuong = soLuong;
     }
 
-    // 2. Các hàm Getter và Setter
+    // 2. Các hàm Getters và Setters
     public String getMaSach() {
         return maSach;
     }
@@ -76,72 +76,68 @@ class Sach {
     // 3. Các hàm tính toán
     // Bài 2: Tính thành tiền = đơn giá * số lượng
     public double tinhThanhTien() {
-        return this.donGia * this.soLuong;
+        return getDonGia() * getSoLuong();
     }
 
     // Bài 3: Phí vận chuyển = 5% giá trị sách (5% của thành tiền)
     public double tinhPhiVanChuyen() {
-        return this.tinhThanhTien() * 0.05;
+        return tinhThanhTien() * 0.05;
     }
 
     // Bài 4: Tổng tiền nhập = Thành tiền + Phí vận chuyển
     public double tinhTongTien() {
-        return this.tinhThanhTien() + this.tinhPhiVanChuyen();
+        return tinhThanhTien() + tinhPhiVanChuyen();
     }
 
-    // 4. Hàm nhập thông tin bằng Scanner sc (Bài 1)
-    public void nhap(Scanner sc) {
+    // 4. Hàm nhập: Khởi tạo new Scanner sc ngay bên trong hàm và dùng các hàm set
+    public void nhap() {
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("====== NHẬP THÔNG TIN SÁCH ======");
         System.out.print("Nhập mã sách: ");
-        this.maSach = sc.nextLine();
+        setMaSach(sc.nextLine());
 
         System.out.print("Nhập tên sách: ");
-        this.tenSach = sc.nextLine();
+        setTenSach(sc.nextLine());
 
         System.out.print("Nhập tác giả: ");
-        this.tacGia = sc.nextLine();
+        setTacGia(sc.nextLine());
 
         System.out.print("Nhập năm xuất bản: ");
-        this.namXuatBan = sc.nextInt();
+        setNamXuatBan(sc.nextInt());
 
         System.out.print("Nhập đơn giá: ");
-        this.donGia = sc.nextDouble();
+        setDonGia(sc.nextDouble());
 
         System.out.print("Nhập số lượng: ");
-        this.soLuong = sc.nextInt();
+        setSoLuong(sc.nextInt());
     }
 
-    // 5. Hàm xuất thông tin ra màn hình
+    // 5. Hàm xuất: Dùng các hàm get để hiển thị thông tin ra màn hình
     public void xuat() {
         System.out.println("\n====== THÔNG TIN NHẬP KHO ======");
-        System.out.println("Mã sách         : " + this.maSach);
-        System.out.println("Tên sách        : " + this.tenSach);
-        System.out.println("Tác giả         : " + this.tacGia);
-        System.out.println("Năm xuất bản    : " + this.namXuatBan);
-        System.out.printf("Đơn giá         : %,.0f VNĐ\n", this.donGia);
-        System.out.println("Số lượng        : " + this.soLuong);
+        System.out.println("Mã sách         : " + getMaSach());
+        System.out.println("Tên sách        : " + getTenSach());
+        System.out.println("Tác giả         : " + getTacGia());
+        System.out.println("Năm xuất bản    : " + getNamXuatBan());
+        System.out.printf("Đơn giá         : %,.0f VNĐ\n", getDonGia());
+        System.out.println("Số lượng        : " + getSoLuong());
         System.out.println("--------------------------------");
-        System.out.printf("Thành tiền (Bài 2)     : %,.0f VNĐ\n", this.tinhThanhTien());
-        System.out.printf("Phí vận chuyển (Bài 3) : %,.0f VNĐ\n", this.tinhPhiVanChuyen());
-        System.out.printf("=> TỔNG TIỀN NHẬP (Bài 4): %,.0f VNĐ\n", this.tinhTongTien());
+        System.out.printf("Thành tiền (Bài 2)     : %,.0f VNĐ\n", tinhThanhTien());
+        System.out.printf("Phí vận chuyển (Bài 3) : %,.0f VNĐ\n", tinhPhiVanChuyen());
+        System.out.printf("=> TỔNG TIỀN NHẬP (Bài 4): %,.0f VNĐ\n", tinhTongTien());
         System.out.println("================================");
     }
 }
 
-// Lớp chính chứa hàm main để chạy chương trình
+// Lớp chính chứa hàm main để chạy
 public class QuanLySach {
     public static void main(String[] args) {
-        // Khởi tạo Scanner sc
-        Scanner sc = new Scanner(System.in);
-
-        // Khởi tạo đối tượng sách
+        // new đối tượng Sach
         Sach s = new Sach();
 
         // Gọi hàm nhập và hàm xuất
-        s.nhap(sc);
+        s.nhap();
         s.xuat();
-
-        // Đóng scanner
-        sc.close();
     }
 }
